@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Console;
+
 /**
  * Created by Peter on 19/09/2016.
  */
@@ -67,13 +69,15 @@ public class FragmentMenuRecyclerViewAdapter extends RecyclerView.Adapter<Fragme
 
     // Provide a suitable constructor
     public FragmentMenuRecyclerViewAdapter(Flashcard flashcardSetMenu){
+        Log.i(Utils.INFO, "RecyclerViewAdapter constructor called");
         this.mFlashcardSets = flashcardSetMenu;
+        Log.i(Utils.INFO, "mflashcard sets test. Element[0] of subregions: "  + mFlashcardSets.getTitle()[0].toString());
     }
 
     //create new views (invoked by layout manager)
     @Override
     public FragmentMenuRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-
+        Log.i(Utils.INFO, "onCreateViewHolder called");
         //create a new view for the list item
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_card_item, parent, false);
 
@@ -84,10 +88,15 @@ public class FragmentMenuRecyclerViewAdapter extends RecyclerView.Adapter<Fragme
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
-
+        Log.i(Utils.INFO, "onBindViewHolder called");
         holder.mTitle.setText(mFlashcardSets.getTitle()[position]);
-        holder.mSubtitle.setText(mFlashcardSets.getSubtitle()[position]);
-        holder.mCardImage.setImageResource(mFlashcardSets.getArrayIntImgLocation()[position]);
+        //holder.mSubtitle.setText(mFlashcardSets.getSubtitle()[position]);
+        Log.i(Utils.INFO, "Attempt to set image from file ID: " + mFlashcardSets.getArrayIntImgLocation()[position]);
+        try {
+            holder.mCardImage.setImageResource(mFlashcardSets.getArrayIntImgLocation()[position]);
+        } catch (Exception e){
+            Log.i(Utils.INFO, "Error setting image resource: " + e);
+        }
         holder.mRegion.setText(mFlashcardSets.getRegion());
 
         /*holder.mCardView.setOnClickListener(new View.OnClickListener(){
@@ -104,7 +113,7 @@ public class FragmentMenuRecyclerViewAdapter extends RecyclerView.Adapter<Fragme
 
     @Override
     public int getItemCount() {
-        return mFlashcardSets.getNumFlashcards();
+        return mFlashcardSets.getTitle().length;
     }
 
 

@@ -22,6 +22,8 @@ public class FragmentFlashcardMenuPager extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     public static final String ARG_REGION = "ARG_REGION";
     public static final String ARG_REGION_SET = "ARG_REGION_SET";
+    public static final String ARG_REGION_SET_SUBREGIONS = "ARG_REGION_SET_SUBREGIONS";
+    public static final String ARG_REGION_SET_IMAGES = "ARG_REGION_SET_IMAGES";
 
 
     private int mPage;
@@ -32,7 +34,7 @@ public class FragmentFlashcardMenuPager extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     // Flashcard object set containing flashcard object list
-    private Flashcard mMenuFlashcardSet;
+    Flashcard mMenuFlashcardSet = new Flashcard();
 
     //List of limited flashcard objects containing only structurename and region properties
     private List<Flashcard> mMenuCardAttribs;
@@ -50,9 +52,9 @@ public class FragmentFlashcardMenuPager extends Fragment {
 
         args.putInt(ARG_PAGE, page);
         args.putString(ARG_REGION, regions[page]);
-        args.putParcelable(ARG_REGION_SET, regionSet);
-
-        Log.i(Utils.INFO, "Region: " + regions[page]);
+        Log.i(Utils.INFO, "Trying to set subregion array. Element[0]: " + regionSet.getArraySubregion()[0].toString());
+        args.putStringArray(ARG_REGION_SET_SUBREGIONS, regionSet.getArraySubregion());
+        args.putStringArray(ARG_REGION_SET_IMAGES, regionSet.getArrayStrImgLocation());
 
         FragmentFlashcardMenuPager fragment = new FragmentFlashcardMenuPager();
         fragment.setArguments(args);
@@ -65,9 +67,19 @@ public class FragmentFlashcardMenuPager extends Fragment {
     //extra ARG_PAGE is assigned during onCreate
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         mPage = getArguments().getInt(ARG_PAGE);
+        Log.i(Utils.INFO, "Creating page: " + mPage);
+
         mRegion = getArguments().getString(ARG_REGION);
-        mMenuFlashcardSet = getArguments().getParcelable(ARG_REGION_SET);
+        Log.i(Utils.INFO, "Creating page for region: " + mRegion);
+
+        /*mMenuFlashcardSet = getArguments().getParcelable(ARG_REGION_SET);*/
+        mCardTitle = getArguments().getStringArray(ARG_REGION_SET_SUBREGIONS);
+        Log.i(Utils.INFO, "Checking card title array. Element [0]: " + mCardTitle[0].toString());
+
+        mCardImages = getImagesResId(getArguments().getStringArray(ARG_REGION_SET_IMAGES));
+        Log.i(Utils.INFO, "Checking card image ID, Element[0] " + mCardImages[0].toString());
 
         // FlashcardAccess fa = FlashcardAccess.getInstance(getActivity());
         /*mMenuFlashcardSet = fa.getFlashcardNames(mRegion);*/
@@ -80,11 +92,16 @@ public class FragmentFlashcardMenuPager extends Fragment {
 
         //get List of flashcard objects from FlashcardSet object which are then passed to createCardAttributes
         //to generate arrays
-        mMenuCardAttribs = mMenuFlashcardSet.getFlashcardSet();
 
-        createCardAttributes();
+        /*mMenuCardAttribs = mMenuFlashcardSet.getFlashcardSet();
+
+        createCardAttributes();*/
+
+
 
         //Set the properties of the menu flashcard set object and then pass this to the recyclerview adapter
+
+
         mMenuFlashcardSet.setTitle(mCardTitle);
         mMenuFlashcardSet.setSubtitle(mCardSubtitle);
         mMenuFlashcardSet.setArrayIntImgLocation(mCardImages);
@@ -104,6 +121,7 @@ public class FragmentFlashcardMenuPager extends Fragment {
         rv.setHasFixedSize(true);
 
         //Adapter is in separate class, not inner class. Takes string as argument to display information in recycler view.
+
         FragmentMenuRecyclerViewAdapter adapter = new FragmentMenuRecyclerViewAdapter(mMenuFlashcardSet);
         rv.setAdapter(adapter);
 

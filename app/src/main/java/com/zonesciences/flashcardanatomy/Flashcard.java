@@ -2,6 +2,7 @@ package com.zonesciences.flashcardanatomy;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,33 @@ public class Flashcard implements Parcelable {
 
     }
 
-    //Getters and setters
+    public static Flashcard getMenuFlashcardSets (String region){
+        Flashcard flashcard = new Flashcard();
+
+        switch(region){
+            case "Lower Limb":
+                Flashcard lowerLimb = new Flashcard();
+                lowerLimb.setArraySubregion(new String[]{"Gluteal Region", "Thigh", "Leg", "Foot"});
+                lowerLimb.setArrayStrImgLocation(new String[]{"gluteus_maximus", "rectus_femoris", "gastrocnemius", "flexor_digitorum_brevis"});
+                Log.i(Utils.INFO, "lower limb flashcard set created. Subregion array element 1: " + lowerLimb.getArraySubregion()[0].toString() + " element 2 " + lowerLimb.getArraySubregion()[1].toString());
+                flashcard = lowerLimb;
+                break;
+            case "Upper Limb":
+                Flashcard upperLimb = new Flashcard();
+                upperLimb.setArraySubregion(new String[]{"Shoulder", "Rotator Cuff", "Arm", "Forearm", "Hand"});
+                upperLimb.setArrayStrImgLocation(new String[]{"", "", "", "", "", ""});
+                flashcard = upperLimb;
+                break;
+            default:
+                Flashcard defaultSet = new Flashcard();
+                flashcard = defaultSet;
+
+        }
+
+        return flashcard;
+    }
+
+    //Getters and setters for individual flashcards
     public String getStructureName() {
         return mStructureName;
     }

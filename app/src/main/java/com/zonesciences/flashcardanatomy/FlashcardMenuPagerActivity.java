@@ -48,7 +48,9 @@ public class FlashcardMenuPagerActivity extends AppCompatActivity {
         FlashcardAccess flashcardAccess = FlashcardAccess.getInstance(getApplicationContext());
         flashcardAccess.removeEmptyRows();
 
-        mLowerLimbSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Lower Limb", "muscle"));
+        /*mLowerLimbSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Lower Limb", "muscle"));
+
+
         Log.i(Utils.INFO, "Lower limb set generated, num flashcards: " + mLowerLimbSet.getNumFlashcards());
 
         mUpperLimbSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Upper Limb", "muscle"));
@@ -57,9 +59,15 @@ public class FlashcardMenuPagerActivity extends AppCompatActivity {
         mThoraxSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Thorax", "muscle"));
         mAbdomenSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Abdomen", "muscle"));
         mPelvisSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Pelvis", "muscle"));
-        mBackSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Back", "muscle"));
+        mBackSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Back", "muscle"));*/
 
-        mFlashcardRegionSets = new Flashcard[]{mLowerLimbSet, mUpperLimbSet, mHeadSet, mNeckSet, mAbdomenSet, mThoraxSet, mBackSet, mPelvisSet };
+        mLowerLimbSet = Flashcard.getMenuFlashcardSets("Lower Limb");
+        Log.i(Utils.INFO, "Testing lower limb flashcard. Element 0: " + mLowerLimbSet.getArraySubregion()[0].toString());
+
+        mUpperLimbSet = Flashcard.getMenuFlashcardSets("Upper Limb");
+        Log.i(Utils.INFO, "Testing upper limb flashcard. Element 0: " + mUpperLimbSet.getArraySubregion()[0].toString());
+
+        mFlashcardRegionSets = new Flashcard[]{mLowerLimbSet, mUpperLimbSet};
 
         // Create arrays of flashcard sets for each Region
 
@@ -121,7 +129,7 @@ public class FlashcardMenuPagerActivity extends AppCompatActivity {
 
         @Override
         public int getCount(){
-            return tabTitles.length;
+            return regionSets.length;
         }
 
         @Override
