@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">FlashcardAnatomy</string>
+    <string name="mainTitle">Flashcard Anatomy</string>
+    <string name="buttonMainUpperLimb">Upper Limb</string>
+    <string name="buttonMainLowerLimb">Lower Limb</string>
+    <string name="buttonMainHead">Head</string>
+    <string name="buttonMainNeck">Neck</string>
+    <string name="buttonMainThorax">Thorax</string>
+    <string name="buttonMainBack">Back</string>
+    <string name="buttonMainAbdomen">Abdomen</string>
+    <string name="buttonMainPelvis">Pelvis</string>
+    <string name="buttonPreviousFlashcard">Previous</string>
+    <string name="buttonNextFlashcard">Next</string>
+    <string name="buttonDetails">Details</string>
+    <string name="textFlashcardSubtitle">Dummy text</string>
+    <string name="titleLowerLimb">Lower Limb</string>
+    <string name="titleUpperLimb">Upper Limb</string>
+    <string name="titleHead">Head</string>
+    <string name="titleNeck">Neck</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
