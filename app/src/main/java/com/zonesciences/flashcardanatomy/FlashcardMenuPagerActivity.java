@@ -45,8 +45,8 @@ public class FlashcardMenuPagerActivity extends AppCompatActivity {
 
         Log.i(Utils.INFO, "onCreate called");
         //Set up database connection
-        FlashcardAccess flashcardAccess = FlashcardAccess.getInstance(getApplicationContext());
-        flashcardAccess.removeEmptyRows();
+        /*FlashcardAccess flashcardAccess = FlashcardAccess.getInstance(getApplicationContext());
+        flashcardAccess.removeEmptyRows();*/
 
         /*mLowerLimbSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Lower Limb", "muscle"));
 
@@ -62,11 +62,7 @@ public class FlashcardMenuPagerActivity extends AppCompatActivity {
         mBackSet = new Flashcard(flashcardAccess.getFlashcardSetsForRegion("Back", "muscle"));*/
 
         mLowerLimbSet = Flashcard.getMenuFlashcardSets("Lower Limb");
-        Log.i(Utils.INFO, "Testing lower limb flashcard. Element 0: " + mLowerLimbSet.getArraySubregion()[0].toString());
-
         mUpperLimbSet = Flashcard.getMenuFlashcardSets("Upper Limb");
-        Log.i(Utils.INFO, "Testing upper limb flashcard. Element 0: " + mUpperLimbSet.getArraySubregion()[0].toString());
-
         mHeadSet = Flashcard.getMenuFlashcardSets("Head");
         mNeckSet = Flashcard.getMenuFlashcardSets("Neck");
         mThoraxSet = Flashcard.getMenuFlashcardSets("Thorax");
