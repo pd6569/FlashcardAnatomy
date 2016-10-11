@@ -7,7 +7,7 @@ import android.util.Log;
  */
 public class Utils {
 
-    public static String[] REGIONS = new String[]{"Lower Limb", "Upper Limb", "Head", "Neck", "Abdomen", "Thorax", "Back", "Pelvis"};
+    public static String[] REGIONS = new String[]{"Lower Limb", "Upper Limb", "Back", "Thorax", "Head", "Neck", "Abdomen", "Pelvis"};
 
     public static final String INFO = "Info";
     public static final String ERROR = "Error";

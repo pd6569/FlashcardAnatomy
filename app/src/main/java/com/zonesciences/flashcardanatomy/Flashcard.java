@@ -55,7 +55,7 @@ public class Flashcard implements Parcelable {
         switch(region){
             case "Lower Limb":
                 Flashcard lowerLimb = new Flashcard();
-                lowerLimb.setArraySubregion(new String[]{"Gluteal Region", "Thigh", "Leg", "Foot"});
+                lowerLimb.setArraySubregion(new String[]{"Gluteal", "Thigh", "Leg", "Foot"});
                 lowerLimb.setArrayStrImgLocation(new String[]{"gluteus_maximus", "rectus_femoris", "gastrocnemius", "flexor_digitorum_brevis"});
                 Log.i(Utils.INFO, "lower limb flashcard set created. Subregion array element 1: " + lowerLimb.getArraySubregion()[0].toString() + " element 2 " + lowerLimb.getArraySubregion()[1].toString());
                 flashcard = lowerLimb;
@@ -65,6 +65,42 @@ public class Flashcard implements Parcelable {
                 upperLimb.setArraySubregion(new String[]{"Shoulder", "Rotator Cuff", "Arm", "Forearm", "Hand"});
                 upperLimb.setArrayStrImgLocation(new String[]{"", "", "", "", "", ""});
                 flashcard = upperLimb;
+                break;
+            case "Head":
+                Flashcard head = new Flashcard();
+                head.setArraySubregion(new String[]{"Facial Expression", "Mastication"});
+                head.setArrayStrImgLocation(new String[]{"", ""});
+                flashcard = head;
+                break;
+            case "Neck":
+                Flashcard neck = new Flashcard();
+                neck.setArraySubregion(new String[]{"Anterior triangle", "Posterior Triangle", "Paravertebral"});
+                neck.setArrayStrImgLocation(new String[]{"", "", ""});
+                flashcard = neck;
+                break;
+            case "Thorax":
+                Flashcard thorax= new Flashcard();
+                thorax.setArraySubregion(new String[]{"Pectoral", "Thoracic wall", "Diaphragm"});
+                thorax.setArrayStrImgLocation(new String[]{"", "", ""});
+                flashcard = thorax;
+                break;
+            case "Back":
+                Flashcard back = new Flashcard();
+                back.setArraySubregion(new String[]{"Superficial", "Intermediate", "Deep", "Suboccipital"});
+                back.setArrayStrImgLocation(new String[]{"", "", "", ""});
+                flashcard = back;
+                break;
+            case "Abdomen":
+                Flashcard abdomen = new Flashcard();
+                abdomen.setArraySubregion(new String[]{"Anterior wall", "Posterior wall"});
+                abdomen.setArrayStrImgLocation(new String[]{"", ""});
+                flashcard = abdomen;
+                break;
+            case "Pelvis":
+                Flashcard pelvis = new Flashcard();
+                pelvis.setArraySubregion(new String[]{"Superficial perineal pouch", "Deep perineal pouch", "Anal triangle"});
+                pelvis.setArrayStrImgLocation(new String[]{"", "", ""});
+                flashcard = pelvis;
                 break;
             default:
                 Flashcard defaultSet = new Flashcard();

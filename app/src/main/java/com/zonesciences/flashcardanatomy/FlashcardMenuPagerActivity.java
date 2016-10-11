@@ -67,7 +67,14 @@ public class FlashcardMenuPagerActivity extends AppCompatActivity {
         mUpperLimbSet = Flashcard.getMenuFlashcardSets("Upper Limb");
         Log.i(Utils.INFO, "Testing upper limb flashcard. Element 0: " + mUpperLimbSet.getArraySubregion()[0].toString());
 
-        mFlashcardRegionSets = new Flashcard[]{mLowerLimbSet, mUpperLimbSet};
+        mHeadSet = Flashcard.getMenuFlashcardSets("Head");
+        mNeckSet = Flashcard.getMenuFlashcardSets("Neck");
+        mThoraxSet = Flashcard.getMenuFlashcardSets("Thorax");
+        mAbdomenSet = Flashcard.getMenuFlashcardSets("Abdomen");
+        mPelvisSet = Flashcard.getMenuFlashcardSets("Pelvis");
+        mBackSet = Flashcard.getMenuFlashcardSets("Back");
+
+        mFlashcardRegionSets = new Flashcard[]{mLowerLimbSet, mUpperLimbSet, mBackSet, mThoraxSet, mHeadSet, mNeckSet, mAbdomenSet, mPelvisSet};
 
         // Create arrays of flashcard sets for each Region
 
