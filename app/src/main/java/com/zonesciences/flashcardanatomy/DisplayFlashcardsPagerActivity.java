@@ -22,6 +22,8 @@ public class DisplayFlashcardsPagerActivity extends AppCompatActivity {
 
     ViewPager flashcardsViewPager;
 
+    FlashcardAccess fa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,7 @@ public class DisplayFlashcardsPagerActivity extends AppCompatActivity {
 
         Log.i(Utils.INFO, "Region is: " + mRegion + "Subregion is: " + mSubregion);
 
-        FlashcardAccess fa = FlashcardAccess.getInstance(getApplicationContext());
+        fa = FlashcardAccess.getInstance(getApplicationContext());
         fa.open();
         fa.removeEmptyRows();
 
@@ -55,6 +57,8 @@ public class DisplayFlashcardsPagerActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                /*fa.close();
+                flashcardSet = null;*/
                 finish();
             }
         });
@@ -95,7 +99,6 @@ public class DisplayFlashcardsPagerActivity extends AppCompatActivity {
         });
 
     }
-
 
 
     class FragmentDisplayFlashcardsPagerAdapter extends FragmentPagerAdapter {

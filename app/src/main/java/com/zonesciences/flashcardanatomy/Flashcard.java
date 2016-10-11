@@ -63,7 +63,7 @@ public class Flashcard implements Parcelable {
             case "Upper Limb":
                 Flashcard upperLimb = new Flashcard();
                 upperLimb.setArraySubregion(new String[]{"Shoulder", "Rotator Cuff", "Arm", "Forearm", "Hand"});
-                upperLimb.setArrayStrImgLocation(new String[]{"deltoid_thumb", "infraspinatus_thumb", "biceps_brachii_thumb", "extensor_digitorum_thum", ""});
+                upperLimb.setArrayStrImgLocation(new String[]{"deltoid_thumb", "infraspinatus_thumb", "biceps_brachii_thumb", "extensor_digitorum_thumb", ""});
                 flashcard = upperLimb;
                 break;
             case "Head":
